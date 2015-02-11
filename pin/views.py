@@ -16,9 +16,6 @@ from pin.tools import get_request_timestamp
 from user_profile.models import Profile
 from taggit.models import Tag, TaggedItem
 
-MEDIA_ROOT = settings.MEDIA_ROOT
-REPORT_TYPE = settings.REPORT_TYPE
-
 
 def home(request):
     timestamp = get_request_timestamp(request)
