@@ -3,10 +3,10 @@
 
 {% block extra_js %}
 
-<script src="{{MEDIA_URL}}js/underscore-min.js"></script>
-<script src="{{MEDIA_URL}}js/backbone-min.js"></script>
-<script src="{{MEDIA_URL}}js/backbone-tastypie.js"></script>
-<script src="{{MEDIA_URL}}js/jquery.masonry.min.js"></script>
+<script src="{{STATIC_URL}}js/underscore-min.js"></script>
+<script src="{{STATIC_URL}}js/backbone-min.js"></script>
+<script src="{{STATIC_URL}}js/backbone-tastypie.js"></script>
+<script src="{{STATIC_URL}}js/jquery.masonry.min.js"></script>
 {% endblock extra_js %}
 
 {% block content %}
@@ -41,6 +41,6 @@ var start_loading=0;
 
 </script>
 
-<script src="{{MEDIA_URL}}js/app.js"></script>
+<script src="{{STATIC_URL}}js/app.js"></script>
 
 {% endblock content %}
