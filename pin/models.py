@@ -45,28 +45,28 @@ class Post(models.Model):
     FAULT = 2
 
     STATUS_CHOICES = (
-        (PENDING, 'منتظر تایید'),
-        (APPROVED, 'تایید شده'),
-        (FAULT, 'تخلف'),
+        (PENDING, 'PENDING'),
+        (APPROVED, 'APPROVED'),
+        (FAULT, 'FAULT'),
     )
 
     #title = models.CharField(max_length=250, blank=True)
     text = models.TextField(blank=True, verbose_name=_('Text'))
-    image = models.CharField(max_length=500, verbose_name='تصویر')
+    image = models.CharField(max_length=500, verbose_name='image')
     create_date = models.DateField(auto_now_add=True)
     create = models.DateTimeField(auto_now_add=True)
     timestamp = models.IntegerField(db_index=True, default=1347546432)
     user = models.ForeignKey(User)
     like = models.IntegerField(default=0)
     url = models.CharField(blank=True, max_length=2000, validators=[URLValidator()])
-    status = models.IntegerField(default=0, blank=True, verbose_name="وضعیت", choices=STATUS_CHOICES)
+    status = models.IntegerField(default=0, blank=True, verbose_name="status", choices=STATUS_CHOICES)
     device = models.IntegerField(default=1, blank=True)
     hash = models.CharField(max_length=32, blank=True, db_index=True)
     actions = models.IntegerField(default=1, blank=True)
-    is_ads = models.BooleanField(default=False, blank=True, verbose_name="آگهی")
+    is_ads = models.BooleanField(default=False, blank=True, verbose_name="is ad?")
     view = models.IntegerField(default=0, db_index=True)
     show_in_default = models.BooleanField(default=False, blank=True,
-        db_index=True, verbose_name='نمایش در خانه')
+        db_index=True, verbose_name='show_in_default')
 
     report = models.IntegerField(default=0, db_index=True)
     cnt_comment = models.IntegerField(default=-1, blank=True)
@@ -76,7 +76,7 @@ class Post(models.Model):
     height = models.IntegerField(default=-1, blank=True)
     width = models.IntegerField(default=-1, blank=True)
 
-    category = models.ForeignKey(Category, default=1, verbose_name='گروه')
+    category = models.ForeignKey(Category, default=1, verbose_name='category')
     objects = models.Manager()
     accepted = AcceptedManager()
 
