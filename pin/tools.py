@@ -44,7 +44,7 @@ def userdata_cache(user, field=None, size=100):
 
         return data
     else:
-        avatar = daddy_avatar.get_avatar(user, size=size)
+        avatar = daddy_avatar.daddy_avatar(user, size=size)
         username = get_username(user)
 
         value = [avatar, username]

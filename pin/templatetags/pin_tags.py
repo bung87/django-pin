@@ -110,7 +110,7 @@ def get_username(user):
 @register.filter
 def get_userdata_avatar(user, size=30):
     #print "size is: ",  user, size
-    return userdata_cache(user, 0, size=size)
+    return userdata_cache(str(user), 0, size=size)
 
 
 @register.filter
