@@ -35,12 +35,12 @@ class PinAdmin(admin.ModelAdmin):
         for obj in queryset:
             send_notif(user=obj.user, type=Notif.APPROVE, post=obj, actor=request.user)
 
-    make_approve.short_description = u"تایید مطلب"
+    make_approve.short_description = u"make_approve"
 
     def make_approve_go_default(modeladmin, request, queryset):
         queryset.update(status=1, show_in_default=True, timestamp=time.time())
 
-    make_approve_go_default.short_description = u"تایید و ارسال برای صفحه اصلی"
+    make_approve_go_default.short_description = u"make_approve_go_default"
 
     def no_problem(self, request, queryset):
         for obj in queryset:
@@ -48,7 +48,7 @@ class PinAdmin(admin.ModelAdmin):
             obj.status = Post.APPROVED
             obj.save()
 
-    no_problem.short_description = "عکس مشکلی نداره"
+    no_problem.short_description = "no_problem"
 
     def really_delete_selected(self, request, queryset):
         for obj in queryset:
@@ -60,7 +60,7 @@ class PinAdmin(admin.ModelAdmin):
             message_bit = "%s pin entries were" % queryset.count()
         self.message_user(request, "%s successfully deleted." % message_bit)
 
-    really_delete_selected.short_description = "حذف انتخاب شده ها"
+    really_delete_selected.short_description = "really_delete_selected"
 
     def delete_all_user_posts(self, request, queryset):
         for obj in queryset:
@@ -70,7 +70,7 @@ class PinAdmin(admin.ModelAdmin):
             Post.objects.filter(user=obj.user).delete()
             Comments.objects.filter(user=obj.user).delete()
 
-    delete_all_user_posts.short_description = 'حذف تمام پست های کاربر و غیر فعال کردن'
+    delete_all_user_posts.short_description = 'delete_all_user_posts'
 
     def fault(self, request, queryset):
         for obj in queryset:
@@ -87,7 +87,7 @@ class PinAdmin(admin.ModelAdmin):
         for obj in queryset:
             send_notif(user=obj.user, type=Notif.FAULT, post=obj, actor=request.user)
 
-    fault.short_description = 'ثبت تخلف'
+    fault.short_description = 'fault'
 
 
 class NotifyAdmin(admin.ModelAdmin):
