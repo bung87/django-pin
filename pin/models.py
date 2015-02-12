@@ -36,7 +36,7 @@ class Category(models.Model):
 
 class AcceptedManager(models.Manager):
     def get_query_set(self):
-        return super(AcceptedManager, self).get_query_set().filter(status=1)
+        return super(AcceptedManager, self).get_queryset().filter(status=1)
 
 
 class Post(models.Model):
