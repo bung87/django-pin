@@ -1,10 +1,10 @@
-{% load daddy_avatar%}
+{% load pin_tags%}
 {% load humanize %}
 {% load pin_tags %}
 <div class="advertise" style="width: 934px;margin: 10px auto;">
-    <script type="text/javascript" src="{{MEDIA_URL}}js/swfobject.js"></script>
+    <script type="text/javascript" src="{{STATIC_URL}}js/swfobject.js"></script>
     <script type="text/javascript">
-    swfobject.embedSWF("{{MEDIA_URL}}ads/iranneeds.swf", "adsContent", "934", "118", "9.0.0");
+    swfobject.embedSWF("{{STATIC_URL}}ads/iranneeds.swf", "adsContent", "934", "118", "9.0.0");
     </script>
     <div id="adsContent">
         <p>Alternative content</p>
@@ -13,56 +13,56 @@
 <div class="ProfileHeader">
 <div class="FixedContainer row clearfix" style="">
 	<div class="ProfileInfo ProfilePanel ">
-    <a href="" class="ProfileImage"><img src="{{cur_user|get_avatar:165}}" alt=""></a>
+   {% comment %} <a href="" class="ProfileImage"><img src="{{cur_user.id|get_userdata_avatar :165}}" alt=""></a>{% endcomment %}
     <div class="content">
         <span class="profile-name">{{cur_user|get_username}}</span>
         <ul id="user_information_details">
             <li class="user_acc">
-                <label for="User_acceptability"> امتیاز</label> : {{cur_user.profile.score|intcomma}}
+                <label for="User_acceptability">Rating</label> : {{cur_user.profile.score|intcomma}}
             </li>
             <li class="user_acc">
-                <label for="User_acceptability"> تعداد مطالب</label> : {{cur_user.profile.cnt_post}}
+                <label for="User_acceptability">Entries:</label> : {{cur_user.profile.cnt_post}}
             </li>
             <li class="user_acc">
-                <label for="User_acceptability"> تعداد لایک</label> : {{cur_user.profile.cnt_like}}
+                <label for="User_acceptability">Likes:</label> : {{cur_user.profile.cnt_like}}
             </li>
             <li class="user_acc">
-                <label for="User_acceptability"> تعداد خطا</label> : {{cur_user.profile.fault}}
+                <label for="User_acceptability">Faults</label> : {{cur_user.profile.fault}}
             </li>
             <li class="user_acc">
-                <label for="User_acceptability"> ارسال مطلب</label> : 
+                <label for="User_acceptability"> Tell the story</label> : 
                 {% if cur_user.profile.post_accept and cur_user.profile.post_accept_admin  %}
-                <b class="tooltips" data-placement="bottom" rel="tooltip" title="مطالب ارسالی نیاز به تایید ندارند">
+                <b class="tooltips" data-placement="bottom" rel="tooltip" title="Do not need to verify submissions">
                     <i class="icon-ok"></i>
                 </b>
                 {% if user.is_superuser %}
-                    <a href="{% url "post-accept" cur_user.id 0 %}">غیر فعال</a>
+                    <a href="{% url "post-accept" cur_user.id 0 %}">Non-active</a>
                 {% endif %}
                 {% else%}
-                <b class="tooltips" data-placement="bottom" rel="tooltip" title="مطالب ارسال شده بعد تایید مدیران سایت نمایش داده می شوند.">
+                <b class="tooltips" data-placement="bottom" rel="tooltip" title="Content posted after moderator approval are displayed.">
                     <i class="icon-ban-circle"></i>
                 </b>
                 {% if user.is_superuser %}
-                    <a href="{% url "post-accept" cur_user.id 1 %}">تایید شود</a>
+                    <a href="{% url "post-accept" cur_user.id 1 %}">Be approved</a>
                 {% endif %}
                 {%endif%}
             </li>
             <li class="user_acc">
-                <label for="User_acceptability"> وضعیت</label> : 
+                <label for="User_acceptability"> The status of</label> : 
                 {% if cur_user.is_active %}
                 فعال
                 {% if user.is_superuser %}
-                    <a href="{% url "activate-user" cur_user.id 0%}">غیر فعال کردن</a>
+                    <a href="{% url "activate-user" cur_user.id 0%}">Disable</a>
                 {% endif %}
                 {% else%}
                 غیرفعال
                 {% if user.is_superuser %}
-                    <a href="{% url "activate-user" cur_user.id 1%}">فعال کردن</a>
+                    <a href="{% url "activate-user" cur_user.id 1%}">Enable</a>
                 {% endif %}
                 {%endif%}
             </li>
             <li class="user_acc ">
-                <label> عضویت</label> : {{cur_user.date_joined|date:"d-m-Y"}}
+                <label>Join</label> : {{cur_user.date_joined|date:"d-m-Y"}}
             </li>
         </ul>
 
@@ -75,9 +75,9 @@
         	{% if cur_user.id != request.user.id %}
 				{% include "pin/following_box.html"%}
 			{% else %}
-    <a href="{% url "user-profile-change" %}" role="button" class="btn" data-toggle="modal" data-target="#profileModal">ویرایش مشخصات</a>
+    <a href="{% url "user-profile-change" %}" role="button" class="btn" data-toggle="modal" data-target="#profileModal">Edit profile</a>
     
-    <a href="/accounts/password/change/?{{user.has_usable_password}}">تعویض رمز عبور</a>
+    <a href="/accounts/password/change/?{{user.has_usable_password}}">Password changer</a>
 
 			{% endif%}
         </div>
@@ -88,12 +88,12 @@
     <ul id="user_boxes_list">
         <li>
             <a href="{% url "pin-user-like" cur_user.id %}">
-                مطالب مورد علاقه
+                Likes
             </a>
         </li>
         <li>
             <a href="{% url "pin-user-friends" cur_user.id %}">
-                دوستان
+                Friends
             </a>
         </li>
     </ul>

@@ -3,10 +3,10 @@
 {%csrf_token%}
 {{ form.errors}}
 	<div class="control-group">
-		<label class="control-label">آدرس:</label>
+		<label class="control-label">Address:</label>
 		<div class="controls">
 			<input type="text" name="url" id="url" placeholder="URL" class="span3 ltr"> <br><br>
-			<input id="btn-pin-url" type="button" class="btn btn-primary" value="بررسی لینک" />
+			<input id="btn-pin-url" type="button" class="btn btn-primary" value="Check the link" />
 		</div>
 	</div>
 	<input type="hidden" name="image" id="image_url">
@@ -26,7 +26,7 @@
 	</div>
 	<div class="control-group ">
             
-        <label class="control-label">توضیحات</label>
+        <label class="control-label">Description</label>
 		<div class="controls">
 			<textarea id="id_text" rows="4" cols="40" name="text"> </textarea>
 		<span class="help-inline"> </span>
@@ -34,20 +34,20 @@
     </div>
     
     <div class="control-group">
-        <label class="control-label">گروه</label>
+        <label class="control-label">Category</label>
         <div class="controls">
             {{pin_form.category}}
         </div>
     </div>
 
     <div class="control-group">
-		<label class="control-label">برچسب ها: </label>
+		<label class="control-label">Tags: </label>
 		<div class="controls">
 			<textarea id="textareaUrl" name="tags" rows="1"></textarea>
 		</div>
 	</div>
 	<div class="form-actions">
-		<input id="pin-submit" type="submit" class="btn btn-primary disabled" value="ارسال" style="display: none" />
+		<input id="pin-submit" type="submit" class="btn btn-primary disabled" value="Post" style="display: none" />
 	</div>
 </div>
 </form>
@@ -79,7 +79,7 @@ $(".img-move").click(function(){
 });
 
 $("#btn-pin-url").click(function(){
-	$(this).val('لطفا صبر کنید');
+	$(this).val('Please wait');
 	$(this).addClass('disabled');
 	
 	 url = $("#url").val();
@@ -90,8 +90,8 @@ var images = [];
 var cur_id = 0;
 
 function error_alert(){
-	alert('لطفا آدرس را با دقت وارد نمایید');
-	$("#btn-pin-url").val('بررسی لینک').removeClass('disabled');
+	alert('Please enter address carefully');
+	$("#btn-pin-url").val('Check the link').removeClass('disabled');
 }
 
 function parse_data(data){

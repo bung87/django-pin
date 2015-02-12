@@ -216,12 +216,12 @@ def popular(request, interval=""):
     if request.is_ajax():
         return render(request, 'pin/_items.html',
                       {'latest_items': latest_items,
-                       'offset': latest_items.next_page_number})
+                       'offset': latest_items.next_page_number if latest_items.has_next() else False})
 
     else:
         return render(request, 'pin/home.html',
                       {'latest_items': latest_items,
-                       'offset': latest_items.next_page_number})
+                       'offset': latest_items.next_page_number if latest_items.has_next() else False})
 
 
 def topuser(request):
@@ -247,8 +247,9 @@ def user(request, user_id, user_name=None):
     user = get_object_or_404(User, pk=user_id)
 
     profile, created = Profile.objects.get_or_create(user=user)
-    if not profile.count_flag:
-        profile.user_statics()
+    # print dir(profile)
+    # if not profile.count_flag:
+    #     profile.user_statics()
 
     timestamp = get_request_timestamp(request)
 

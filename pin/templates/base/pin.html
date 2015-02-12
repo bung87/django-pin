@@ -51,36 +51,36 @@
 			<ul class="nav nav-tabs nav-second">
 				<li>
 					<form class="navbar-search pull-left" action="/search/" method="get">
-						<input type="text" name="q" class="search-query" placeholder="جستجو">
+						<input type="text" name="q" class="search-query" placeholder="search">
 					</form>
 				</li>
 				<li class="nav-right">
-					<a href="{% url "pin-home" %}">آخرین مطالب</a></li>
+					<a href="{% url "pin-home" %}">latest</a></li>
 			  <li class="nav-right">
 			  {% if user.is_authenticated%}
-			  	<a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="icon-plus-sign"></i> ارسال مطلب جدید </a>
+			  	<a data-toggle="modal" data-target="#myModal" href="#myModal"><i class="icon-plus-sign"></i>Post new entry</a>
 			  {%else%}
-			  	<a href="/accounts/login/?next=/pin"><i class="icon-plus-sign"></i> ارسال مطلب جدید</a>
+			  	<a href="/accounts/login/?next=/pin"><i class="icon-plus-sign"></i>Post new entry</a>
 			  {%endif%}
 			  </li>
 			  <li class="nav-right">
 			  {% if user.is_authenticated%}
-			  	<a data-toggle="modal" data-target="#pin-from-url" href="#pin-from-url"><i class=" icon-globe"></i> ارسال از وب</a>
+			  	<a data-toggle="modal" data-target="#pin-from-url" href="#pin-from-url"><i class=" icon-globe"></i>Post from the Web</a>
 			  {%else%}
-			  	<a href="/accounts/login/?next=/pin"><i class=" icon-globe"></i> ارسال از وب</a>
+			  	<a href="/accounts/login/?next=/pin"><i class=" icon-globe"></i>Post from the Web</a>
 			  {%endif%}
 			  </li>
 
 <li class="nav-right">
-	<a href="{% url "pin-popular" %}"><i class="icon-fire"></i> برترینها</a>
+	<a href="{% url "pin-popular" %}"><i class="icon-fire"></i>popular</a>
 </li>
 			  
 {% if user.is_authenticated%}
 <li class="nav-right">
-	<a href="{% url "pin-following" %}">دنبال شوندگان</a>
+	<a href="{% url "pin-following" %}">following</a>
 </li>
 <li class="nav-right">
-	<a href="#notify" data-load="{% url "show_notify" %}" title="اعلانات" class="popnotify"><i class="icon-bell"> </i> {{user.id|get_user_notify}} </a>
+	<a href="#notify" data-load="{% url "show_notify" %}" title="notifications" class="popnotify"><i class="icon-bell"> </i> {{user.id|get_user_notify}} </a>
 </li>
 {%endif%}
 			  
@@ -102,7 +102,7 @@
 <div style="display: none;" class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h2 id="myModalLabel">ارسال مطلب جدید</h2>
+    <h2 id="myModalLabel">Post new entry</h2>
   </div>
   <div class="modal-body">
     {% include "pin/_send.html"%}
@@ -112,7 +112,7 @@
 <div style="display: none;" class="modal" id="pin-from-url" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close btn-large" data-dismiss="modal" aria-hidden="true">×</button>
-    <h2 id="myModalLabel">ارسال از وب</h2>
+    <h2 id="myModalLabel">Post from the Web</h2>
   </div>
   <div class="modal-body">
     {% include "pin/_sendurl.html"%}
@@ -123,7 +123,7 @@
 <div id="profileModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h2 id="myModalLabel">ویرایش مشخصات</h2>
+    <h2 id="myModalLabel">Edit profile</h2>
   </div>
   <div class="modal-body">
   </div>
@@ -134,7 +134,7 @@
 <div style="display: none;" class="modal modal-pin-item fade" id="pinitem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close btn-large" data-dismiss="modal" aria-hidden="true">×</button>
-    <h2 id="myModalLabel">ویرایش پین</h2>
+    <h2 id="myModalLabel">Edit your PIN</h2>
   </div>
   <div class="modal-body">
     

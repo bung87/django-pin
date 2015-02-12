@@ -3,7 +3,7 @@
 {% csrf_token%}
 	<div class="control-group">
       	{{ form.errors}}
-        <label class="control-label">تصویر: </label>
+        <label class="control-label">Image:</label>
 		<div class="controls">
 			<div class="uploaded-image"> </div>
 			<input type="hidden" value="" id="image_field" name="image" />
@@ -17,7 +17,7 @@
 	
 	<div class="control-group ">
             
-        <label class="control-label">توضیحات: </label>
+        <label class="control-label">Description: </label>
 		<div class="controls">
 			<textarea id="id_text" rows="5" cols="40" name="text"> </textarea>
 		<span class="help-inline"> </span>
@@ -25,22 +25,22 @@
     </div>
     
     <div class="control-group">
-		<label class="control-label">آدرس:</label>
+		<label class="control-label">Address:</label>
 		<div class="controls">
 			<input type="text" name="url" placeholder="URL" class="span3 ltr">
 		</div>
 	</div>
 
     <div class="control-group">
-        <label class="control-label">گروه </label>
+        <label class="control-label">Category</label>
         <div class="controls">
             {{pin_form.category}}
         </div>
     </div>
 	
 	<div class="control-group">
-		<label class="control-label">برچسب ها: </label>
-		<p class="text-info">برچسب ها را با enter از یکدیگر جدا کنید</p>
+		<label class="control-label">Tags:</label>
+		<p class="text-info">Enter tags separated by.</p>
 		<div class="controls">
 			<textarea id="textarea" name="tags" rows="1"></textarea>
 		</div>
@@ -48,7 +48,7 @@
 	</div>
 
 <div class="form-actions">
-	<input type="submit" class="btn btn-primary" value="ذخیره" />
+	<input type="submit" class="btn btn-primary" value="Save" />
 </div>
 </form>
 
