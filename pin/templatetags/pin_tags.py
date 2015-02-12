@@ -82,7 +82,7 @@ register.tag('user_post_like', user_post_like)
 
 @register.filter
 def get_user_notify(userid):
-    print "user id ", userid
+    #print "user id ", userid
     notify = Notif.objects.all().filter(user_id=userid, seen=False).count()
     return notify
 
